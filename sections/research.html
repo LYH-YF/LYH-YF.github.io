@@ -1,0 +1,67 @@
+<!-- sections/research.html -->
+
+<!-- 点击节点后，显示详细信息的容器 -->
+<!--<div id="node-details" style="padding: 10px; border: 1px solid #ddd; margin: 10px auto; max-width: 800px; background: #f9f9f9;">-->
+<!--  点击一个节点显示详细信息-->
+<!--</div>-->
+
+<!--<h2 align="center">Research Graph</h2>-->
+<div style="width: 100%;">
+  <!-- SVG 占满父容器宽度 -->
+<!--  <svg style="width: 100%; min-height: 500px; border: 1px solid #ddd;"></svg>-->
+  <svg style="width: 100%; min-height: 500px; border: 1px solid #ddd;"></svg>
+  <!-- 将节点详细信息移动到图表下方，同样宽度 100% -->
+  <div id="node-details" style="width: 100%; padding: 10px; border: 1px solid #ddd; margin-top: 10px; background: #f9f9f9;">
+    Click the node to see details.
+  </div>
+</div>
+<!--<div style="max-width: 800px; margin: 0 auto;">-->
+<!--  &lt;!&ndash; 2. 先渲染图表 &ndash;&gt;-->
+<!--  <svg></svg>-->
+<!--  &lt;!&ndash; 3. 将节点详细信息移动到图表下方，并设置与图表同宽 &ndash;&gt;-->
+<!--  <div id="node-details" style="width: 100%; padding: 10px; border: 1px solid #ddd; margin-top: 10px; background: #f9f9f9;">-->
+<!--    Click the node to see details.-->
+<!--  </div>-->
+<!--</div>-->
+<!-- tooltip -->
+<div class="tooltip"></div>
+
+<!-- 图形的 CSS 样式 -->
+<style>
+  svg {
+    width: 100%;
+    min-height: 500px; /* 取消固定高度，改用最小高度 */
+    border: 1px solid #ddd;
+  }
+  .node circle {
+    fill: steelblue;
+    stroke: white;
+    stroke-width: 2px;
+  }
+  .node text {
+    font-size: 14px;
+    fill: white;
+    pointer-events: none;
+    text-anchor: middle;
+  }
+  .link {
+    stroke: #999;
+    stroke-opacity: 0.6;
+    marker-end: url(#arrow);
+  }
+  .tooltip {
+    position: absolute;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    visibility: hidden;
+    max-width: 300px;
+    pointer-events: auto;
+  }
+  .tooltip a {
+    color: #00ccff;
+    text-decoration: underline;
+  }
+</style>

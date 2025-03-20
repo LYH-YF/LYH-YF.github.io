@@ -1,62 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Yihuai Lan's Homepage</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 在主页面引入 d3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
-<body class="bg-gray-100 text-gray-900">
-    <div class="container mx-auto px-4 py-10">
-        <div class="max-w-3xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
-            <div class="flex justify-center mt-6">
+<body class="bg-gray-100 text-gray-900 h-screen">
+<div class="w-full h-full px-4 py-10">
+    <div class="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden">
+        <!-- 左侧：头像、About Me 及联系方式 -->
+        <div class="md:w-1/4 bg-gray-50 p-6">
+            <div class="flex justify-center">
                 <img class="w-32 h-32 rounded-full border-4 border-gray-300" src="./profile-photo.jpg" alt="Profile Picture">
             </div>
             <div class="text-center mt-4">
-                <h1 class="text-2xl font-bold">Yihuai LAN (兰义怀)</h1>
-                <p class="text-gray-600">Research Engineer | AI & NLP Enthusiast</p>
+                <h1 class="text-xl font-bold">Yihuai LAN (兰义怀)</h1>
+                <p class="text-gray-600">Research Engineer</p>
             </div>
-            <div class="p-6">
-                <h2 class="text-xl font-semibold">About Me</h2>
-                <p class="mt-2 text-gray-700">I graduated with a Bachelor's degree from Xihua University. My research interests include AI, Natural Language Processing, and Large Language Models.</p>
+            <!-- About Me 内容 -->
+            <div class="mt-4">
+                <h2 class="text-lg font-semibold mb-2">About Me</h2>
+                <p class="text-gray-700">
+                    I am Yihuai LAN, a Research Engineer and AI &amp; NLP Enthusiast passionate about exploring innovative approaches in artificial intelligence. My interests lie in natural language processing and large language models.
+                </p>
             </div>
-            <div class="p-6">
-                <h2 class="text-xl font-semibold">Work Experience</h2>
-                <ul class="mt-2 space-y-2">
-                    <li>Research Assistant @ HKUST(GZ) (Sep 2023 - Aug 2024)</li>
-                    <li>Research Engineer @ SMU (Feb 2025 - Present)</li>
-                </ul>
-            </div>
-            <div class="p-6">
-                <h2 class="text-xl font-semibold">Publications</h2>
-                <ul class="mt-2 space-y-2">
-                    <li><a href="https://aclanthology.org/2024.emnlp-main.7/" class="text-blue-500"><strong><em>LLM-Based Agent Society Investigation: Collaboration and Confrontation in Avalon Gameplay</em></strong></a><br>
-                        <span class="text-gray-700 font-light"><strong>Yihuai Lan</strong>, Zhiqiang Hu, Lei Wang, Yang Wang, Deheng Ye, Peilin Zhao, Ee-Peng Lim, Hui Xiong, and Hao Wang</span><br>
-                        EMNLP 2024
-                    </li>
-                    <li><a href="https://aclanthology.org/2023.emnlp-main.319/" class="text-blue-500"><strong><em>LLM-Adapters: An Adapter Family for Parameter-Efficient Fine-Tuning of Large Language Models</em></strong></a><br>
-                        <span class="text-gray-700 font-light">Zhiqiang Hu, Lei Wang, <strong>Yihuai Lan</strong>, Wanyu Xu, Ee-Peng Lim, Lidong Bing, Xing Xu, Soujanya Poria, and Roy Lee</span><br>
-                        EMNLP 2023
-                    </li>
-                    <li><a href="https://aclanthology.org/2023.acl-long.147/" class="text-blue-500"><strong><em>Plan-and-solve prompting: Improving zero-shot chain-of-thought reasoning by large language models</em></strong></a><br>
-                        <span class="text-gray-700 font-light">Lei Wang, Wanyu Xu, <strong>Yihuai Lan</strong>, Zhiqiang Hu, Yunshi Lan, Roy Ka-Wei Lee, Ee-Peng Lim</span><br>
-                        ACL 2023
-                    </li>
-                    <li><a href="https://ojs.aaai.org/index.php/AAAI/article/view/21723" class="text-blue-500"><strong><em>MWPToolkit: An Open-Source Framework for Deep Learning-Based Math Word Problem Solvers</em></strong></a><br>
-                        <span class="text-gray-700 font-light"><strong>Yihuai Lan</strong>, Lei Wang, Qiyuan Zhang, Yunshi Lan, Bing Tian Dai, Yan Wang, Dongxiang Zhang, Ee-Peng Lim</span><br>
-                        AAAI 2022
-                    </li>
-                </ul>
-            </div>
-            <div class="p-6">
-                <h2 class="text-xl font-semibold">Contact</h2>
-                <ul class="mt-2 space-y-2">
+            <!-- 联系方式 -->
+            <div class="mt-6">
+                <h2 class="text-lg font-semibold mb-2">Contact</h2>
+                <ul class="space-y-2">
                     <li>Email: <a href="mailto:yifan2250@gmail.com" class="text-blue-500">yifan2250@gmail.com</a></li>
                     <li>GitHub: <a href="https://github.com/LYH-YF" class="text-blue-500">github.com/LYH-YF</a></li>
                     <li>Google Scholar: <a href="https://scholar.google.com/citations?user=esNrAZcAAAAJ" class="text-blue-500">scholar.google.com/citations?user=esNrAZcAAAAJ</a></li>
                 </ul>
             </div>
         </div>
+        <!-- 右侧：标签页内容 -->
+        <div class="md:w-3/4 p-6">
+            <!-- 标签导航 -->
+            <div class="border-b border-gray-200">
+                <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+                    <button class="tab-link text-gray-600 py-4 px-1 border-b-2 font-medium" data-tab="education">Education</button>
+                    <button class="tab-link text-gray-600 py-4 px-1 border-b-2 font-medium" data-tab="work">Work Experience</button>
+                    <button class="tab-link text-gray-600 py-4 px-1 border-b-2 font-medium" data-tab="research">Research</button>
+                </nav>
+            </div>
+            <!-- 标签内容容器 -->
+            <div id="tab-content" class="tab-content mt-6">
+                <!-- 默认加载 sections/education.html -->
+            </div>
+        </div>
     </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const tabLinks = document.querySelectorAll('.tab-link');
+        const tabContentContainer = document.getElementById('tab-content');
+        const sectionsPath = 'sections/'; // 指向存放各 tab HTML 的文件夹
+
+        // 动态加载并插入对应的 HTML
+        async function loadTab(tabName) {
+            try {
+                const response = await fetch(`${sectionsPath}${tabName}.html`);
+                if (!response.ok) {
+                    throw new Error(`HTTP 错误，状态码: ${response.status}`);
+                }
+                const html = await response.text();
+                // 将子页面的静态内容插入到 tabContentContainer
+                tabContentContainer.innerHTML = html;
+
+                // 如果是 research 标签，则调用 initResearchGraph() 初始化图形
+                if (tabName === 'research') {
+                    initResearchGraph();
+                }
+            } catch (error) {
+                tabContentContainer.innerHTML = `<p class="text-red-500">加载内容时发生错误: ${error}</p>`;
+            }
+        }
+
+        // 用于初始化 D3.js Research Graph 的函数
+        function initResearchGraph() {
+            // 1. 在已插入的 HTML 里找到相应的 DOM 元素
+            const container = document.getElementById('tab-content');
+            const svg = container.querySelector('svg');
+            const detailsDiv = container.querySelector('#node-details');
+            const tooltip = container.querySelector('.tooltip');
+
+            // 2. 设定图数据
+            const graphData = {
+                nodes: [
+                    {
+                        "id": "LLM Avalon Agent",
+                        "title": "LLM-Based Agent Society Investigation: Collaboration and Confrontation in Avalon Gameplay",
+                        "url": "https://aclanthology.org/2024.emnlp-main.7/",
+                        "authors": "Yihuai Lan, Zhiqiang Hu, Lei Wang, Yang Wang, Deheng Ye, Peilin Zhao, Ee-Peng Lim, Hui Xiong, and Hao Wang",
+                        "acceptby": "EMNLP 2024"
+                    },
+                    {
+                        "id": "LLM-Adapters",
+                        "title": "LLM-Adapters: An Adapter Family for Parameter-Efficient Fine-Tuning of Large Language Models",
+                        "url": "https://aclanthology.org/2023.emnlp-main.319/",
+                        "authors": "Zhiqiang Hu, Lei Wang, Yihuai Lan, Wanyu Xu, Ee-Peng Lim, Lidong Bing, Xing Xu, Soujanya Poria, and Roy Lee",
+                        "acceptby": "EMNLP 2023"
+                    },
+                    {
+                        "id": "Plan-and-Solve",
+                        "title": "Plan-and-solve prompting: Improving zero-shot chain-of-thought reasoning by large language models",
+                        "url": "https://aclanthology.org/2023.acl-long.147/",
+                        "authors": "Lei Wang, Wanyu Xu, Yihuai Lan, Zhiqiang Hu, Yunshi Lan, Roy Ka-Wei Lee, Ee-Peng Lim",
+                        "acceptby": "ACL 2023"
+                    },
+                    {
+                        "id": "MWPToolkit",
+                        "title": "MWPToolkit: An Open-Source Framework for Deep Learning-Based Math Word Problem Solvers",
+                        "url": "https://ojs.aaai.org/index.php/AAAI/article/view/21723",
+                        "authors": "Yihuai Lan, Lei Wang, Qiyuan Zhang, Yunshi Lan, Bing Tian Dai, Yan Wang, Dongxiang Zhang, Ee-Peng Lim",
+                        "acceptby": "AAAI 2022"
+                    },
+                    {
+                        "id": "In-Image Learning",
+                        "title": "All in an Aggregated Image for In-Image Learning",
+                        "url": "https://arxiv.org/abs/2402.17971",
+                        "authors": "Lei Wang, Wanyu Xu, Zhiqiang Hu, Yihuai Lan, Shan Dong, Hao Wang, Roy Ka-Wei Lee, Ee-Peng Lim",
+                        "acceptby": ""
+                    },
+                    {
+                        "id": "Prompt Compression",
+                        "title": "An Empirical Study on Prompt Compression for Large Language Models",
+                        "url": "",
+                        "authors": "Zhang Zheng, Jinyi Li, Yihuai Lan, Xiang Wang, Hao Wang",
+                        "acceptby": "ICLR 2025 Workshop"
+                    },
+                    {
+                        "id": "PCToolkit",
+                        "title": "PCToolkit: A Unified Plug-and-Play Prompt Compression Toolkit of Large Language Models",
+                        "url": "https://arxiv.org/abs/2403.17411",
+                        "authors": "Jinyi Li, Yihuai Lan, Lei Wang, Hao Wang",
+                        "acceptby": ""
+                    },
+                    {
+                        "id": "DVM",
+                        "title": "DVM: Towards Controllable LLM Agents in Social Deduction Games",
+                        "url": "https://arxiv.org/abs/2501.06695",
+                        "authors": "Zheng Zhang, Yihuai Lan, Yangsen Chen, Lei Wang, Xiang Wang, Hao Wang",
+                        "acceptby": "ICASSP 2025"
+                    }
+                ],
+                links: [
+                    { source: "MWPToolkit", target: "Plan-and-Solve" },
+                    { source: "MWPToolkit", target: "LLM-Adapters" },
+                    { source: "Plan-and-Solve", target: "LLM Avalon Agent" },
+                    { source: "Plan-and-Solve", target: "In-Image Learning" },
+                    { source: "MWPToolkit", target: "PCToolkit" },
+                    { source: "PCToolkit", target: "Prompt Compression" },
+                    { source: "LLM Avalon Agent", target: "DVM" }
+                ]
+            };
+
+            // 3. 仅设置 SVG 的宽度，高度由 CSS 控制（min-height）
+            const containerWidth = container.clientWidth;
+            d3.select(svg).attr("width", containerWidth);
+
+            // 4. 定义箭头
+            const defs = d3.select(svg).append("defs");
+            defs.append("marker")
+                .attr("id", "arrow")
+                .attr("viewBox", "0 -5 10 10")
+                .attr("refX", 30)
+                .attr("refY", 0)
+                .attr("markerWidth", 6)
+                .attr("markerHeight", 6)
+                .attr("orient", "auto")
+                .attr("markerUnits", "userSpaceOnUse")
+                .append("path")
+                .attr("d", "M0,-5L10,0L0,5")
+                .attr("fill", "#999");
+
+            // 5. 初始化力导向布局
+            let selectedNode = null;
+            const simulation = d3.forceSimulation(graphData.nodes)
+                .force("link", d3.forceLink(graphData.links).id(d => d.id).distance(200))
+                .force("charge", d3.forceManyBody().strength(-500))
+                // 由于不再固定 500px，高度可自适应，所以这里让 center 大概居中
+                .force("center", d3.forceCenter(containerWidth / 2, 300))
+                .force("collide", d3.forceCollide(d => d.radius + 10))
+                .alpha(1).restart();
+
+            // 6. 绘制连线
+            const link = d3.select(svg).selectAll(".link")
+                .data(graphData.links)
+                .enter().append("line")
+                .attr("class", "link");
+
+            // 7. 绘制节点
+            const node = d3.select(svg).selectAll(".node")
+                .data(graphData.nodes)
+                .enter().append("g")
+                .attr("class", "node")
+                .call(d3.drag()
+                    .on("start", dragStarted)
+                    .on("drag", dragged)
+                    .on("end", dragEnded));
+
+            function dragStarted(event, d) {
+                if (!event.active) simulation.alphaTarget(0.3).restart();
+                d.fx = d.x;
+                d.fy = d.y;
+            }
+            function dragged(event, d) {
+                d.fx = event.x;
+                d.fy = event.y;
+            }
+            function dragEnded(event, d) {
+                if (!event.active) simulation.alphaTarget(0);
+                d.fx = null;
+                d.fy = null;
+            }
+
+            // 8. 节点外观与事件
+            node.append("circle")
+                .attr("r", d => {
+                    const r = Math.max(20, d.id.length * 5);
+                    d.radius = r;
+                    return r;
+                })
+                .on("mouseenter", (event, d) => {
+                    const svgRect = svg.getBoundingClientRect();
+                    const left = svgRect.left + d.x + d.radius + 5;
+                    const top = svgRect.top + d.y - d.radius * 0.5;
+                    d3.select(tooltip)
+                        .style("visibility", "visible")
+                        .html(`
+                <strong>${d.title}</strong><br>
+                Authors: ${d.authors}<br>
+                Accepted by: ${d.acceptby}<br>
+                <a href='${d.url}' target='_blank'>Read Paper</a>
+              `)
+                        .style("left", `${left}px`)
+                        .style("top", `${top}px`);
+                })
+                .on("mouseleave", () => {
+                    d3.select(tooltip).style("visibility", "hidden");
+                })
+                .on("click", (event, d) => {
+                    if (selectedNode && selectedNode.id === d.id) {
+                        selectedNode = null;
+                        detailsDiv.innerHTML = "Click the node to see details.";
+                    } else {
+                        selectedNode = d;
+                        detailsDiv.innerHTML = `
+                <strong>${d.title}</strong><br>
+                Authors: ${d.authors}<br>
+                Accepted by: ${d.acceptby}<br>
+                <a href='${d.url}' target='_blank'>Read Paper</a>
+              `;
+                    }
+                });
+
+            node.append("text")
+                .attr("dy", "0.35em")
+                .attr("text-anchor", "middle")
+                .text(d => d.id);
+
+            // 9. 力导向布局更新
+            simulation.on("tick", () => {
+                link
+                    .attr("x1", d => d.source.x)
+                    .attr("y1", d => d.source.y)
+                    .attr("x2", d => d.target.x - (d.target.radius + 5) *
+                        (d.target.x - d.source.x) /
+                        Math.hypot(d.target.x - d.source.x, d.target.y - d.source.y))
+                    .attr("y2", d => d.target.y - (d.target.radius + 5) *
+                        (d.target.y - d.source.y) /
+                        Math.hypot(d.target.x - d.source.x, d.target.y - d.source.y));
+
+                node.attr("transform", d => `translate(${d.x},${d.y})`);
+            });
+        }
+
+        // 默认加载 education tab
+        loadTab('education');
+
+        // 标签点击事件
+        tabLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                // 更新按钮样式
+                tabLinks.forEach(btn => {
+                    btn.classList.remove('text-blue-500', 'border-blue-500');
+                    btn.classList.add('text-gray-600', 'border-transparent');
+                });
+                this.classList.remove('text-gray-600', 'border-transparent');
+                this.classList.add('text-blue-500', 'border-blue-500');
+
+                // 加载对应 tab
+                const tabName = this.getAttribute('data-tab');
+                loadTab(tabName);
+            });
+        });
+    });
+</script>
 </body>
 </html>
